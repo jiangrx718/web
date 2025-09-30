@@ -19,3 +19,14 @@ log:
   outputs:
     - stdout
     - ./logs/api.log
+auth:
+  jwt:
+    expire_hour: 720
+    secret: jiang_ruoxi
+elasticsearch:
+  engine:
+    demo_indices: rx.demo.alias
+    addresses:
+      - http://127.0.0.1:9200
+    username: elastic
+    password: LYBGheLm0!

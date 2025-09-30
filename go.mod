@@ -6,6 +6,7 @@ toolchain go1.23.6
 
 require (
 	github.com/bwmarrin/snowflake v0.3.0
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/elastic/go-elasticsearch/v7 v7.17.10
 	github.com/fsnotify/fsnotify v1.9.0
 	github.com/getsentry/sentry-go v0.35.3

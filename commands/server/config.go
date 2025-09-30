@@ -1,6 +1,7 @@
 package server
 
 import (
+	"web/gopkg/cache/es"
 	rxRedis "web/gopkg/cache/redis"
 	"web/gopkg/cron"
 	"web/gopkg/gorms"
@@ -34,6 +35,10 @@ func InitConfigFromConfigPath(configPath, envPath string) error {
 	}
 	//初始化cron定时任务
 	if err := cron.DoCron(); err != nil {
+		return err
+	}
+	// ES配置
+	if err := es.Initialize(); err != nil {
 		return err
 	}
 	return nil
