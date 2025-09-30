@@ -1,0 +1,42 @@
+package server
+
+import (
+	_ "net/http/pprof"
+	"web/gopkg/gorms"
+	"web/gopkg/viper"
+	"web/internal/g"
+
+	"github.com/urfave/cli/v2"
+)
+
+func InitConfig(ctx *cli.Context) error {
+	return InitConfigFromConfigPath(getConfigPath(ctx), getEnvPath(ctx))
+}
+
+func InitConfigFromConfigPath(configPath, envPath string) error {
+	if err := viper.Init(configPath, envPath); err != nil {
+		return err
+	}
+
+	if err := gorms.InitGenFromViper(g.SetDefault); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func getConfigPath(ctx *cli.Context) string {
+	if configFile := ctx.String("config"); configFile != "" {
+		return configFile
+	}
+
+	return "config/config.yml"
+}
+
+func getEnvPath(ctx *cli.Context) string {
+	if envPath := ctx.String("env"); envPath != "" {
+		return envPath
+	}
+
+	return ""
+}
