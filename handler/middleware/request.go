@@ -10,7 +10,7 @@ import (
 func RequestCapture() gin.HandlerFunc {
 	return capture.RequestCapture(capture.Options{
 		FilterPaths: []string{
-			"/api/file/upload-file-proxy",
+			"/api/demo/put",
 		},
 	}, func(ctx *gin.Context, request *capture.Request) {
 		ctx.Set(utils.ClientIPKey, request.ClientIP)
