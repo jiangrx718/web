@@ -21,7 +21,7 @@ func (d *Dao) Update(ctx context.Context, tx *g.Query, id string, content string
 		return
 	}
 
-	result, err := tx.Demo.Debug().Where(tx.Demo.DemoId.Eq(id)).Updates(&model.Demo{
+	result, err := tx.Demo.Where(tx.Demo.DemoId.Eq(id)).Updates(&model.Demo{
 		Content: content,
 	})
 	if err != nil {

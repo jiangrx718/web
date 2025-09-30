@@ -12,7 +12,7 @@ func (d *Dao) Get(ctx context.Context, id string) (*model.Demo, error) {
 		return nil, nil
 	}
 
-	demoInfo, err := g.Demo.Debug().Where(g.Demo.DemoId.Eq(id)).First()
+	demoInfo, err := g.Demo.Where(g.Demo.DemoId.Eq(id)).First()
 	if err != nil {
 		return nil, d.ConvertError(err)
 	}

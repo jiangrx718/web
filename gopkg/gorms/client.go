@@ -41,7 +41,9 @@ func InitGenFromViper(setDefault func(db *gorm.DB, opts ...gen.DOOption)) error 
 	if db, err = InitFormViper(); err != nil {
 		return err
 	}
-
+	if viper.GetBool("debug") {
+		db = db.Debug()
+	}
 	if viper.GetBool("local") {
 		db.Config.Logger = logger.Default.LogMode(logger.Silent)
 	}

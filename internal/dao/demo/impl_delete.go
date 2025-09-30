@@ -11,7 +11,7 @@ func (d *Dao) Delete(ctx context.Context, id string) error {
 		return nil
 	}
 
-	_, err := g.Demo.Debug().WithContext(ctx).Where(g.Demo.DemoId.Eq(id)).Delete()
+	_, err := g.Demo.WithContext(ctx).Where(g.Demo.DemoId.Eq(id)).Delete()
 	if err != nil {
 		return d.ConvertError(err)
 	}

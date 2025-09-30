@@ -24,7 +24,7 @@ func (d *Dao) Create(ctx context.Context, name string, fileType int, projectType
 		Metadata:    datatypes.NewJSONType(metadata),
 	}
 
-	if err := g.Demo.Debug().Create(&demoItem); err != nil {
+	if err := g.Demo.Create(&demoItem); err != nil {
 		log.Sugar().Error(ctx, logPrefix, zap.Any("demo record", demoItem))
 		return nil, err
 	}

@@ -10,7 +10,7 @@ import (
 
 func (d *Dao) Pagination(ctx context.Context, page gorms.Page) (*gorms.Paging[*model.Demo], error) {
 	paging, err := gorms.PaginationQuery(
-		g.Demo.Debug().Order(
+		g.Demo.Order(
 			g.Demo.CreatedAt.Desc(),
 		).FindByPage, gorms.Page{
 			PageIndex: page.PageIndex,
