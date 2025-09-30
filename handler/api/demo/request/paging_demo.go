@@ -4,6 +4,6 @@ import (
 	"web/gopkg/gorms"
 )
 
-type PagingDemo struct {
+type PagingDemoParams struct {
 	gorms.Page
 }

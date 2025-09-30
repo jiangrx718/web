@@ -13,11 +13,11 @@ import (
 // @Description 更新
 // @Accept json
 // @Produce	json
-// @Param param body request.UpdateDemo true "请求参数"
+// @Param param body request.UpdateDemoParams true "请求参数"
 // @Success 200 {object} services.BaseResult{data=view.WritingOnline} "操作成功"
 // @Router /api/demo/update [post]
 func (h *Handler) UpdateDemo(ctx *gin.Context) {
-	var req request.UpdateDemo
+	var req request.UpdateDemoParams
 	if err := ctx.Bind(&req); err != nil {
 		gins.BadRequest(ctx, err)
 		return

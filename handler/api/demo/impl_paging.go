@@ -12,11 +12,11 @@ import (
 // @Summary 列表-分页
 // @Description 列表-分页
 // @Produce	json
-// @Param param query request.PagingDemo true "请求参数"
+// @Param param query request.PagingDemoParams true "请求参数"
 // @Success 200 {object} services.BaseResult{data=view.Paging[view.WritingKnowledge]{}} "操作成功"
 // @Router /api/demo/list [get]
 func (h *Handler) PagingDemo(ctx *gin.Context) {
-	var req request.PagingDemo
+	var req request.PagingDemoParams
 
 	if err := ctx.Bind(&req); err != nil {
 		gins.BadRequest(ctx, err)

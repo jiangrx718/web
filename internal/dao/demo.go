@@ -10,7 +10,7 @@ import (
 )
 
 type Demo interface {
-	Create(ctx context.Context, name string, fileType int, projectType int, content string) (*model.Demo, error)
+	Create(ctx context.Context, name string, fileType int, projectType int, content string, metadata model.DemoMetadata) (*model.Demo, error)
 	Delete(ctx context.Context, id string) error
 	Get(ctx context.Context, id string) (*model.Demo, error)
 	Update(ctx context.Context, tx *g.Query, id string, content string) (*gen.ResultInfo, error)

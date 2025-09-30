@@ -12,11 +12,11 @@ import (
 // @Summary 详情
 // @Description 详情
 // @Produce	json
-// @Param param query request.GetDemo false "请求参数"
+// @Param param query request.GetDemoParams false "请求参数"
 // @Success 200 {object} services.BaseResult{data=view.WritingOnline} "操作成功"
 // @Router /api/demo/get [get]
 func (h *Handler) GetDemo(ctx *gin.Context) {
-	var req request.GetDemo
+	var req request.GetDemoParams
 	if err := ctx.Bind(&req); err != nil {
 		gins.BadRequest(ctx, err)
 		return

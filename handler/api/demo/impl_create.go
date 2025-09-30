@@ -23,7 +23,7 @@ func (h *Handler) CreateDemo(ctx *gin.Context) {
 		return
 	}
 
-	result, err := h.demoService.CreateDemo(ctx, req.Name, req.FileType, req.ProjectType)
+	result, err := h.demoService.CreateDemo(ctx, req.Name, req.FileType, req.ProjectType, req.Metadata)
 	if err != nil {
 		gins.ServerError(ctx, err)
 		return
