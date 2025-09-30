@@ -1,7 +1,7 @@
 package server
 
 import (
-	_ "net/http/pprof"
+	rxRedis "web/gopkg/cache/redis"
 	"web/gopkg/cron"
 	"web/gopkg/gorms"
 	"web/gopkg/log"
@@ -26,6 +26,10 @@ func InitConfigFromConfigPath(configPath, envPath string) error {
 	}
 	// 初始化orm
 	if err := gorms.InitGenFromViper(g.SetDefault); err != nil {
+		return err
+	}
+	// 初始化Redis
+	if err := rxRedis.InitFromViper(); err != nil {
 		return err
 	}
 	//初始化cron定时任务
