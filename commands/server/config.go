@@ -3,6 +3,7 @@ package server
 import (
 	_ "net/http/pprof"
 	"web/gopkg/gorms"
+	"web/gopkg/log"
 	"web/gopkg/viper"
 	"web/internal/g"
 
@@ -18,6 +19,9 @@ func InitConfigFromConfigPath(configPath, envPath string) error {
 		return err
 	}
 
+	if err := log.InitFromViper(); err != nil {
+		return err
+	}
 	if err := gorms.InitGenFromViper(g.SetDefault); err != nil {
 		return err
 	}

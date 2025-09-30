@@ -35,6 +35,7 @@ func newDemo(db *gorm.DB, opts ...gen.DOOption) demo {
 	_demo.FileType = field.NewInt(tableName, "file_type")
 	_demo.ProjectType = field.NewInt(tableName, "project_type")
 	_demo.Content = field.NewString(tableName, "content")
+	_demo.Metadata = field.NewField(tableName, "metadata")
 	_demo.CreatedAt = field.NewTime(tableName, "created_at")
 	_demo.UpdatedAt = field.NewTime(tableName, "updated_at")
 
@@ -54,6 +55,7 @@ type demo struct {
 	FileType    field.Int    // 文档类型,1可研报告,2需求报告
 	ProjectType field.Int    // 项目类型,1产品购置类,2开发实施类,3数据工程类,4咨询、运维类
 	Content     field.String // 文档内容
+	Metadata    field.Field  // 元数据
 	CreatedAt   field.Time   // 创建时间
 	UpdatedAt   field.Time   // 更新时间
 
@@ -79,6 +81,7 @@ func (d *demo) updateTableName(table string) *demo {
 	d.FileType = field.NewInt(table, "file_type")
 	d.ProjectType = field.NewInt(table, "project_type")
 	d.Content = field.NewString(table, "content")
+	d.Metadata = field.NewField(table, "metadata")
 	d.CreatedAt = field.NewTime(table, "created_at")
 	d.UpdatedAt = field.NewTime(table, "updated_at")
 
@@ -97,7 +100,7 @@ func (d *demo) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
 }
 
 func (d *demo) fillFieldMap() {
-	d.fieldMap = make(map[string]field.Expr, 9)
+	d.fieldMap = make(map[string]field.Expr, 10)
 	d.fieldMap["id"] = d.ID
 	d.fieldMap["deleted_at"] = d.DeletedAt
 	d.fieldMap["demo_id"] = d.DemoId
@@ -105,6 +108,7 @@ func (d *demo) fillFieldMap() {
 	d.fieldMap["file_type"] = d.FileType
 	d.fieldMap["project_type"] = d.ProjectType
 	d.fieldMap["content"] = d.Content
+	d.fieldMap["metadata"] = d.Metadata
 	d.fieldMap["created_at"] = d.CreatedAt
 	d.fieldMap["updated_at"] = d.UpdatedAt
 }
